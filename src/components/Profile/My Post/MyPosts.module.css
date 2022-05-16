@@ -1,0 +1,11 @@
+
+.Message {
+    color: chartreuse;
+    font-size: large;
+}
+.Title{
+    color: black;
+    font-size: x-large;
+    padding: 10px;
+}
+

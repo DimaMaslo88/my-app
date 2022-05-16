@@ -1,0 +1,17 @@
+
+.item {
+    color: #02225d;
+    padding: 10px;
+
+}
+.item img{
+    width: 45px;
+    height: 45px;
+    border-radius: 20px;
+
+}
+.like img{
+    width: 30px;
+    height: 30px;
+
+}

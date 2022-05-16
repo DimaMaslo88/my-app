@@ -1,0 +1,32 @@
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+    height: 100%;
+
+}
+
+.dialogItem {
+    padding: 10px;
+    color: #053c69;
+    font-family: Calibri;
+    font-size: large;
+
+
+
+}
+.dialog{
+    text-decoration: none;
+}
+.activeLink{
+    color: black;
+    font-family: Georgia;
+}
+.messages {
+    padding: 10px;
+}
+
+.messages.message {
+
+}
