@@ -55,8 +55,9 @@ export const UsersFunctionalComponent = () => {
                     <img src={us.photos.small !== null ? us.photos.small : userPhoto}/>
                         </NavLink>
                 </div>
-                {us.followed
 
+
+                {us.followed
                     ? <button disabled={!!user.touchingProgress.find(f => f === us.id)}
                               onClick={() => {
                                   dispatch(deletePost(us.id)) // диспатчим санку
@@ -64,7 +65,7 @@ export const UsersFunctionalComponent = () => {
                               }}
                     >unfollow</button>
 
-                    : <button disabled={!!user.touchingProgress.find((f: any) => f === us.id)}
+                    : <button disabled={!!user.touchingProgress.find(f => f === us.id)}
                               onClick={() => {
                                   dispatch(createPost(us.id)) // диспатчим санку
 

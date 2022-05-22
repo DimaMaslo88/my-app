@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Header from "./Header";
 import {authApi} from "../../api/auth_api";
-import {getUserData, setUserData} from "../redux/auth_reducer";
+import {createUserData, setUserData} from "../redux/auth_reducer";
 import {AppRootStateType} from "../redux/redux-store";
 import style from "./Header.module.css"
 
@@ -14,7 +14,7 @@ export type MapStateToPropsType = {
 class HeaderContainer extends React.Component<any, any> {
 
     componentDidMount() {
-        this.props.getUserData() // ThunkCreator
+        this.props.createUserData() // ThunkCreator
 
 
 
@@ -47,4 +47,4 @@ const mapStateToProps = (state: AppRootStateType): MapStateToPropsType => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, {setUserData,getUserData})(HeaderContainer);
+export default connect(mapStateToProps, {setUserData,createUserData})(HeaderContainer);

@@ -22,6 +22,8 @@ const ProfileInfo = (props: ProfileInfoType) => {
         <div className={style.descriptionBlock}>
             <img src={props.profile.photos.small}/>
             <div>{props.profile.aboutMe}</div>
+            <span>{props.profile.contacts.vk}</span>
+            <span>{props.profile.contacts.github}</span>
             <ProfileStatus/>
 
 

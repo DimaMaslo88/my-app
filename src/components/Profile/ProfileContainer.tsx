@@ -19,10 +19,10 @@ class ProfileContainer extends React.Component<any, any> {
 
         let userId = this.props.router.params.userId
         console.log(this.props.router)
-        if (!userId) {
-            userId = 2
-
-        }
+        // if (!userId) {
+        //     userId =  22176
+        //
+        // }
 
         this.props.getProfyles(userId)
         this.props.getStatus(userId)     // используется Thunk

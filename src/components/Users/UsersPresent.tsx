@@ -3,7 +3,7 @@ import userPhoto from '../../images/user.png'
 import style from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import {followApi} from "../../api/follow_api";
-import {deletePost} from "../redux/users-reducer";
+import {deletePost, UsersType} from "../redux/users-reducer";
 
 
 export const UsersPresent = (props: any) => {
@@ -27,7 +27,7 @@ debugger
             })}
 
         </div>
-        {props.users.map((m: any) => <div key={m.id}>
+        {props.users.map((m: UsersType) => <div key={m.id}>
 
             <span>
                 <div>
@@ -37,33 +37,17 @@ debugger
                 </div>
                 {m.followed
                     ? <button disabled={
-                        props.touchingProgress.find((f: number) => f === m.id)}
+                        props.touchingProgress.find((f: string) => f === m.id)}
                               onClick={() => {
                                   props.deletePost(m.id)
-                                  // props.toggleIsTouching(true, m.id)
-                                  // followApi.deletePost(m.id)
-                                  //     .then((res) => {
-                                  //         if (res.data.resultCode === 0) {
-                                  //             props.unFollow(m.id)
-                                  //         }
-                                  //         props.toggleIsTouching(false, m.id)
-                                  //
-                                  //     })
+
                               }}
                     >unfollow</button>
 
-                    : <button disabled={props.touchingProgress.find((f:number) => f === m.id)}
+                    : <button disabled={props.touchingProgress.find((f:string) => f === m.id)}
                               onClick={() => {
                                   props.createPost(m.id)
-                                  //
-                                  // props.toggleIsTouching(true, m.id)
-                                  // followApi.createPost(m.id)
-                                  //     .then((res) => {
-                                  //         if (res.data.resultCode === 0) {
-                                  //             props.follow(m.id)
-                                  //         }
-                                  //         props.toggleIsTouching(false, m.id)
-                                  //     })
+
 
                               }}
                     >follow</button>

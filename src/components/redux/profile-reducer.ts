@@ -1,6 +1,7 @@
 import {MessagePostDataType} from "./store";
 import {Dispatch} from "redux";
 import {profileApi} from "../../api/profile-api";
+import photo from '../../images/new2.jpg'
  type GeneralActionType=ChangePostType|AddNewPostType|GetProfileType|SetUserStatus
 
 export type ProfileType = {
@@ -32,12 +33,12 @@ export type PostType = {
 const initialState = {
 
     messagePostData:
-        [{id: '1', message: 'Hallo,my dear friend', likesCount: 15},
+        [{id: '1', message: 'Hello,my dear friend', likesCount: 15},
             {id: '2', message: 'How are you?', likesCount: 20},
             {id: '3', message: 'My name is Dima', likesCount: 2},],
     newPostText: "",
     profile: {
-        aboutMe: "я круто чувак 1001%",
+        aboutMe: "я крутой чувак 1001%",
 
         contacts: {
             facebook: "facebook.com",
@@ -50,11 +51,11 @@ const initialState = {
             mainLink: null
         },
         lookingForAJob: true,
-        lookingForAJobDescription: "не ищу, а дурачусь",
-        fullName: "samurai dimych",
-        userId: 2,
+        lookingForAJobDescription: "Ищу работу frontend-developer",
+        fullName: "Dmitry Maslo",
+        userId:  22176,
         photos: {
-            small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
+            small: photo,
             large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
         }
     },

@@ -33,7 +33,7 @@ export const ProfileStatus = () => {
 
             <div>
                 {!editMode &&
-                <span onDoubleClick={activateEditMode}>{statusUser || "No status"}</span>
+                <span onDoubleClick={activateEditMode}>{`Status: ${statusUser}` || "No status"}</span>
                 }
             </div>
 

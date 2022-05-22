@@ -15,7 +15,7 @@ export const TextArea = () => {
     const dispatch = useDispatch()
     let messageTextArea = useSelector<AppRootStateType, string>(state => state.messagesPage.newMessageText)
     const onClickHandler = () => {
-        debugger
+
         dispatch(sendNewMessageAC())
         // props.store.dispatch(sendNewMessageAC())
     }

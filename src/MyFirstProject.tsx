@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './MyFirstProject.css';
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
@@ -10,17 +10,31 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Setting/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-import UsersContainer from "./components/Users/UsersContainer";
+
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
 import {UsersFunctionalComponent} from "./components/Users/UsersFunctionalComponent";
-import userPhoto from "./images/user.png";
+import {useDispatch, useSelector} from "react-redux";
+import {initializeAppTC, loginUser} from "./components/redux/auth_reducer";
+import CircularProgress from "@mui/material/CircularProgress";
+import {AppRootStateType} from "./components/redux/redux-store";
+
 
 
 const MyFirstProject = () => {
-    console.log("MyFirstProject rendering")
+    const dispatch=useDispatch()
+    const isInitialized=useSelector<AppRootStateType,boolean>(state=>state.auth.isInitialized)
+    useEffect(()=>{
+        dispatch(initializeAppTC())
+    },[])
 
+    if (!isInitialized) {
+        return <div
+            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
+            <CircularProgress/>
+        </div>
+    }
 
     return (
 

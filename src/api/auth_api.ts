@@ -1,4 +1,5 @@
 import {instance} from "./instanse";
+import {Axios, AxiosResponse} from "axios";
 
 
 export const authApi = {
@@ -6,7 +7,10 @@ export const authApi = {
         return instance.get("auth/me")
     },
     login(data:AuthLoginType) {
-        return instance.post<ResponseType,ResponseType>("auth/login",{data})
+        return instance.post<AuthLoginType,AxiosResponse<ResponseType<{ userId: number }>>>("auth/login",data)
+    },
+    loginOut(){
+        return instance.delete("auth/login")
     }
 }
 
@@ -16,7 +20,7 @@ export type ResponseType<D = {}> = {
     messages: string[],
     data: D
 }
-type AuthLoginType = {
+export type AuthLoginType = {
     email: string
     password: string
     rememberMe?: boolean

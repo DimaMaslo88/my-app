@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {usersApi} from "../../api/users_api";
 import {followApi} from "../../api/follow_api";
+import {Preloader} from "../../common/Preloader";
 
 type GeneralType = FollowType
     | UnFollowType
@@ -160,6 +161,7 @@ export const deletePost=(userId:string)=>(dispatch:Dispatch)=>{    //Thunk
         .then((res) => {
             if (res.data.resultCode === 0) {
                dispatch(unFollow(userId))
+
             }
            dispatch(toggleIsTouching(false,userId))
 
