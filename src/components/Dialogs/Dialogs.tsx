@@ -49,7 +49,7 @@ const Dialogs = () => {
             <div className={style.messages}>
                 {messagesElement}
                 <div>
-                    <TextArea messageTextArea={messageTextArea}
+                    <TextArea messageText={messageTextArea}
                               sendText={sendText}
                               updateText={updateText}
                     />

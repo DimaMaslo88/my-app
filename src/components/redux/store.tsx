@@ -12,7 +12,7 @@ const store:any = {
                 [{id: '1', message: 'Hallo,my dear friend', likesCount: 15},
                     {id: '2', message: 'How are you?', likesCount: 20},
                     {id: '3', message: 'My name is Dima', likesCount: 2},],
-            newPostText: "Hello Diman"
+            newPostText: ""
 
         },
         messagesPage: {

@@ -106,7 +106,8 @@ export const profileReducer = (state: InitialStateType = initialState, action:Ge
 type AddNewPostType = ReturnType<typeof addNewPostAC>
 export const addNewPostAC = () => {
     return {
-        type: "NEW-POST"
+        type: "NEW-POST",
+
     } as const
 }
 type ChangePostType = ReturnType<typeof changePostAC>

@@ -9,19 +9,19 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send'
 
-type TextAreaPropsType={
-    messageTextArea:string
-    sendText:()=>void
-    updateText:(text:any)=>void
+type TextAreaPropsType = {
+    messageText: string
+    sendText: () => void
+    updateText: (text: string) => void
 }
-export const TextArea = ({messageTextArea,sendText}:TextAreaPropsType) => {
+export const TextArea = ({messageText, sendText, updateText}: TextAreaPropsType) => {
 
 
     const dispatch = useDispatch()
     // let messageTextArea = useSelector<AppRootStateType, string>(state => state.messagesPage.newMessageText)
     const onClickHandler = () => {
 
-      dispatch(sendText)
+        dispatch(sendText)
         // props.store.dispatch(sendNewMessageAC())
     }
     const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -31,8 +31,7 @@ export const TextArea = ({messageTextArea,sendText}:TextAreaPropsType) => {
     }
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value;
-        dispatch(updateNewMessageAC(text))
-        // props.store.dispatch(updateNewMessageAC(text))
+        updateText(text)
     }
     return (
 
@@ -50,7 +49,7 @@ export const TextArea = ({messageTextArea,sendText}:TextAreaPropsType) => {
                     ),
                 }}
                 variant="standard"
-                value={messageTextArea}
+                value={messageText}
                 onChange={onChangeHandler}
                 onKeyPress={onKeyPress}
             />
