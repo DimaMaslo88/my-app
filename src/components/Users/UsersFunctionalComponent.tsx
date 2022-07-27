@@ -19,6 +19,7 @@ import {Preloader} from "../../common/Preloader";
 
 export const UsersFunctionalComponent = () => {
     const onPageChanged = (currentPage: number) => {
+
         dispatch(getUsers(currentPage, user.pageSize))
     }
 

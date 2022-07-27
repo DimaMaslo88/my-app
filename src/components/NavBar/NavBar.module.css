@@ -3,6 +3,8 @@
     background-color: aqua;
     font-size: 150%;
     padding: 30px;
+    margin-top: 10px;
+    border-radius: 5px
 
 }
 .item {

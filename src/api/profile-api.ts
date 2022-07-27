@@ -5,7 +5,7 @@ export const profileApi = {
     getProfyles(userId: number) {
         return instance.get(`profile/${userId}`,)
     },
-    getStatus(userId: number) {
+    getStatus(userId: number | null) {
         return instance.get(`/profile/status/${userId}`)
     },
     updateStatus(status:string){

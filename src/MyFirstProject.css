@@ -15,7 +15,10 @@
 .app-wrapper-content {
 
     grid-area: content;
-    background-image: url("images/pexels-juan-gomez-10821729.jpg");
+    background-color: honeydew;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 

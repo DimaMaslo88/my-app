@@ -1,13 +1,17 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import {setUserStatus, updateStatus} from "../../../redux/profile-reducer";
+import {getStatus, setUserStatus, updateStatus} from "../../../redux/profile-reducer";
 import {AppRootStateType} from "../../../redux/redux-store";
 
 export const ProfileStatus = () => {
 
     const dispatch = useDispatch()
     const statusUser = useSelector<AppRootStateType, string>(state => state.profilePage.status)
+    const userId=useSelector<AppRootStateType,number | null>(state=>state.auth.id)
+    useEffect(() => {
+        dispatch(getStatus(userId))
+    },[userId])
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let statusUser = e.currentTarget.value
@@ -26,6 +30,11 @@ export const ProfileStatus = () => {
         setEditMode(false)
         dispatch(updateStatus(statusUser))
     }
+    const onPressHandler=(e:KeyboardEvent<HTMLInputElement>)=>{
+        if(e.key === "Enter"){
+            dispatch(setUserStatus(statusUser))
+        }
+    }
 
     return (
 
@@ -43,6 +52,7 @@ export const ProfileStatus = () => {
                        onBlur={deactivatedMode}
                        autoFocus={true}
                        value={statusUser}
+                       onKeyPress={onPressHandler}
 
                 />
                 }

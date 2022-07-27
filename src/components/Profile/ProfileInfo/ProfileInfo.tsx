@@ -1,11 +1,12 @@
 import React from 'react';
-import style from './ProfileInfo.module.css';
+
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/redux-store";
 import {ProfileType} from "../../redux/profile-reducer";
 import Profiles, {ProfilesType} from "../Profiles";
 import {Preloader} from "../../../common/Preloader";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
+import style from './ProfileInfo.module.css'
 
 type ProfileInfoType = {
     profile: ProfileType
@@ -17,13 +18,15 @@ const ProfileInfo = (props: ProfileInfoType) => {
         return <Preloader/>
     }
 
-    return <div>
+    return <div className={style.profileHeader}>
 
         <div className={style.descriptionBlock}>
-            <img src={props.profile.photos.small}/>
-            <div>{props.profile.aboutMe}</div>
-            <span>{props.profile.contacts.vk}</span>
-            <span>{props.profile.contacts.github}</span>
+            <img src={props.profile.photos.small} className={style.contentImg}/>
+            <div>
+             <h4> Info :  {props.profile.aboutMe}</h4>
+            </div>
+            <div>{props.profile.contacts.vk}</div>
+            <div>{props.profile.contacts.github}</div>
             <ProfileStatus/>
 
 

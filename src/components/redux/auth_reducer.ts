@@ -91,7 +91,7 @@ export const createUserData = () => (dispatch: Dispatch) => { // ThunkCreator
         })
 }
 
-export const loginUser = (data: AuthLoginType) => (dispatch: Dispatch) => {
+export const loginUser = (data: AuthLoginType) => (dispatch: Dispatch) => { // ThunkCreator
     authApi.login(data)
         .then((res) => {
             if (res.data.resultCode === 0) {

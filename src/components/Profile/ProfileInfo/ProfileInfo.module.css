@@ -1,9 +1,15 @@
+
+.profileHeader{
+    margin: 15px;
+}
 .descriptionBlock{
     padding: 20px;
 }
 
-.content img {
-    width:1000px;
+.contentImg {
+    width:250px;
     height:300px;
+    border-radius: 15px;
+
 }
 

@@ -47,7 +47,7 @@ const initialState = {
             twitter: "https://twitter.com/@sdf",
             instagram: "instagra.com/sds",
             youtube: null,
-            github: "github.com",
+            github: "https://github.com/DimaMaslo88/todolist",
             mainLink: null
         },
         lookingForAJob: true,
@@ -59,7 +59,7 @@ const initialState = {
             large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
         }
     },
-    status:""
+    status:"Ищу работу разрабом)))"
 }
 type InitialStateType = {
     messagePostData: PostType[]
@@ -143,7 +143,7 @@ export const getProfyles=(userId:number)=>(dispatch:Dispatch)=>{ //ThunkCreator
            dispatch(setUserProfile(res.data))
         })
 }
-export const getStatus=(userId:number)=>(dispatch:Dispatch)=>{ // ThunkCreator
+export const getStatus=(userId:number | null)=>(dispatch:Dispatch)=>{ // ThunkCreator
      profileApi.getStatus(userId)
          .then((res)=>{
 

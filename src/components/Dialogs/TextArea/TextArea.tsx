@@ -9,19 +9,24 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send'
 
-export const TextArea = () => {
+type TextAreaPropsType={
+    messageTextArea:string
+    sendText:()=>void
+    updateText:(text:any)=>void
+}
+export const TextArea = ({messageTextArea,sendText}:TextAreaPropsType) => {
 
 
     const dispatch = useDispatch()
-    let messageTextArea = useSelector<AppRootStateType, string>(state => state.messagesPage.newMessageText)
+    // let messageTextArea = useSelector<AppRootStateType, string>(state => state.messagesPage.newMessageText)
     const onClickHandler = () => {
 
-        dispatch(sendNewMessageAC())
+      dispatch(sendText)
         // props.store.dispatch(sendNewMessageAC())
     }
     const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            dispatch(sendNewMessageAC())
+            dispatch(sendText)
         }
     }
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {

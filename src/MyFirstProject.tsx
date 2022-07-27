@@ -33,7 +33,9 @@ const MyFirstProject = () => {
         return <div
             style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
             <CircularProgress/>
+
         </div>
+
     }
 
     return (
@@ -46,6 +48,7 @@ const MyFirstProject = () => {
             <div className='app-wrapper-content'>
 
                 <Routes>
+                    <Route path='/' element={<News/>}/>
                     <Route path='/dialogs' element={<DialogsContainer/>}/>
                     <Route path='/profile' element={<ProfileContainer/>}/>
                     <Route path='/profile/:userId' element={<ProfileContainer/>}/>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from './Posts.module.css';
 
 
@@ -9,6 +9,7 @@ type PostsPropsType = {
 }
 
 function Posts(props: PostsPropsType) {
+
 
     return (
         <div>
@@ -21,7 +22,9 @@ function Posts(props: PostsPropsType) {
                     <div className={style.like}>
 
                         <img
-                            src='https://cdn.pixabay.com/photo/2017/08/17/15/49/like-2651767__480.png'/> {props.likesCount}
+                            src='https://cdn.pixabay.com/photo/2017/08/17/15/49/like-2651767__480.png'
+                        />
+                        {props.likesCount}
 
                     </div>
 
