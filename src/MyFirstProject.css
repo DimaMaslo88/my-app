@@ -15,6 +15,8 @@
 .app-wrapper-content {
 
     grid-area: content;
+    box-shadow: 7px 3px 3px #d5d4a9;
+    border: 1px solid yellow;
     background-color: honeydew;
     margin-left: 10px;
     margin-top: 10px;

@@ -12,7 +12,7 @@ export function MyPosts(props: any) {
     const postMessage = useSelector<AppRootStateType, string>(state => state.profilePage.newPostText)
     let postElements = props.post.map((m: PostType) => <Posts key={m.id} message={m.message}
                                                               likesCount={m.likesCount}/>)
-    let newPostMessage = React.createRef<HTMLTextAreaElement>();
+
     let onNewPost = () => {
         props.addPost()
 

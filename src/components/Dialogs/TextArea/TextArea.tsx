@@ -29,7 +29,7 @@ export const TextArea = ({messageText, sendText, updateText}: TextAreaPropsType)
             dispatch(sendText)
         }
     }
-    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let text = e.currentTarget.value;
         updateText(text)
     }

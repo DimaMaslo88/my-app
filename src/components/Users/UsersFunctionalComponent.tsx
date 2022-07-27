@@ -4,17 +4,16 @@ import {AppRootStateType} from "../redux/redux-store";
 import {
     createPost,
     deletePost,
-    follow,
+
     getUsers,
     initialStateType,
-    setUser,
-    unFollow,
+
     UsersType
 } from "../redux/users-reducer";
 import style from './Users.module.css'
-import axios from "axios";
+
 import {NavLink} from "react-router-dom";
-import userPhoto from "../../images/user.png";
+import userPhoto from "../../images/1299.jpg";
 import {Preloader} from "../../common/Preloader";
 
 export const UsersFunctionalComponent = () => {
