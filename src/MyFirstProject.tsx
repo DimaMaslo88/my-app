@@ -1,16 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './MyFirstProject.css';
-import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
-import Profile from "./components/Profile/Profiles";
-import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
-import Settings from "./components/Setting/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-
-
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
@@ -21,13 +15,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import {AppRootStateType} from "./components/redux/redux-store";
 
 
-
 const MyFirstProject = () => {
-    const dispatch=useDispatch()
-    const isInitialized=useSelector<AppRootStateType,boolean>(state=>state.auth.isInitialized)
-    useEffect(()=>{
+    const dispatch = useDispatch()
+    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.auth.isInitialized)
+    useEffect(() => {
         dispatch(initializeAppTC())
-    },[])
+    }, [])
 
     if (!isInitialized) {
         return <div
@@ -54,7 +47,6 @@ const MyFirstProject = () => {
                     <Route path='/profile/:userId' element={<ProfileContainer/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
-                    <Route path='/settings' element={<Settings/>}/>
                     <Route path='/users' element={<UsersFunctionalComponent/>}/>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/404' element={<h1>404: PAGE NOT FOUND</h1>}/>

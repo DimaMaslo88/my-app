@@ -1,6 +1,6 @@
 import {MessagesPageType} from "./store";
 
- // export type GeneralActionType=sendNewMessageType|updateNewMessageType
+  export type GeneralActionType=SendNewMessageType|UpdateNewMessageType
 const initialState = {
 
     dialogData: [
@@ -21,10 +21,10 @@ const initialState = {
  export type InitialStateType=MessagesPageType
 
 
-export const messagePageReducer = (state = initialState, action: any):InitialStateType => {
+export const messagePageReducer = (state = initialState, action: GeneralActionType):InitialStateType => {
     switch (action.type) {
         case "NEW_MESSAGE": {
-            return  {...state, newMessageText: state.newMessageText = action.text}
+            return  {...state, newMessageText: state.newMessageText= action.text}
 
         }
 
@@ -44,16 +44,16 @@ export const messagePageReducer = (state = initialState, action: any):InitialSta
 
     }
 }
-type sendNewMessageType=ReturnType<typeof sendNewMessageAC>
+type SendNewMessageType=ReturnType<typeof sendNewMessageAC>
 export const sendNewMessageAC = () => {
     return {
         type: "SEND_MESSAGE"
-    }
+    }as const
 }
-type updateNewMessageType=ReturnType<typeof updateNewMessageAC>
+type UpdateNewMessageType=ReturnType<typeof updateNewMessageAC>
 export const updateNewMessageAC = (text: any) => {
     return {
         type: "NEW_MESSAGE",
        text
-    }
+    }as const
 }

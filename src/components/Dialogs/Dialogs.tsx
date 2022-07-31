@@ -17,10 +17,7 @@ const Dialogs = () => {
     (state => state.messagesPage.dialogData)
     let dialogUsers = dialogsElements.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
 
-    // .map((dialog: DialogDataType) =>
-    // <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>))
-
-    let messagesElement = useSelector<AppRootStateType>
+      let messagesElement = useSelector<AppRootStateType>
     (state => state.messagesPage.messageItemData.map((m: messageItemDataType) =>
         <MessageItem key={m.id} message={m.message} id={m.id}/>))
 

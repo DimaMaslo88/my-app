@@ -1,10 +1,15 @@
 .header {
     grid-area: header;
     background-color: #77d8a8;
+    box-shadow: 7px 3px 3px #25bd71;
+    border-radius: 5px;
+    border:2px solid #25bd71
 }
 
 .header img {
     width: 60px;
+    height: 55px;
+    border-radius: 3px
 
 }
 .login{

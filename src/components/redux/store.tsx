@@ -44,14 +44,8 @@ const store:any = {
         this._callSubscriber = observer
     },
 
+    //
 
-    dispatch(action: ActionType) {
-        //@ts-ignore
-        profileReducer(this._state.profilePage, action)
-        messagePageReducer(this._state.messagesPage, action)
-
-        this._callSubscriber(this._state)
-    }
 
 
 }
@@ -61,11 +55,11 @@ const store:any = {
 
 
 
-  type ActionType = {
-    type: "NEW-POST" | "CHANGE-POST" | "NEW_MESSAGE" | "SEND_MESSAGE"
-    newText: string
-    newText2: string
-}
+  // type ActionType = {
+  //   type: "NEW-POST" | "CHANGE-POST" | "NEW_MESSAGE" | "SEND_MESSAGE"
+  //   newText: string
+  //   newText2: string
+// }
 export type MessagePostDataType = {
     id: string
     message: string

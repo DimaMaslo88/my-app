@@ -2,7 +2,12 @@ import {MessagePostDataType} from "./store";
 import {Dispatch} from "redux";
 import {profileApi} from "../../api/profile-api";
 import photo from '../../images/new2.jpg'
- type GeneralActionType=ChangePostType|AddNewPostType|GetProfileType|SetUserStatus
+
+type GeneralActionType = ChangePostType
+    | AddNewPostType
+    | GetProfileType
+    | SetUserStatus
+    | AddLikesCount
 
 export type ProfileType = {
     aboutMe: string
@@ -53,22 +58,22 @@ const initialState = {
         lookingForAJob: true,
         lookingForAJobDescription: "Ищу работу frontend-developer",
         fullName: "Dmitry Maslo",
-        userId:  22176,
+        userId: 22176,
         photos: {
             small: photo,
             large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
         }
     },
-    status:"Ищу работу разрабом)))"
+    status: "Ищу работу разрабом)))"
 }
 type InitialStateType = {
     messagePostData: PostType[]
     newPostText: string
     profile: ProfileType
-    status:string
+    status: string
 
 }
-export const profileReducer = (state: InitialStateType = initialState, action:GeneralActionType): InitialStateType => {
+export const profileReducer = (state: InitialStateType = initialState, action: GeneralActionType): InitialStateType => {
     switch (action.type) {
         case "NEW-POST": {
             let newP = {
@@ -96,8 +101,11 @@ export const profileReducer = (state: InitialStateType = initialState, action:Ge
             return {...state, profile: action.profile}
         }
 
-        case "GET_STATUS":{
-            return {...state,status:action.status}
+        case "GET_STATUS": {
+            return {...state, status: action.status}
+        }
+        case "NEW-LIKES-COUNT":{
+            return {...state,messagePostData:state.messagePostData.map(m=>m.id===action.id?{...m,likesCount:action.likes+1}:m)}
         }
         default:
             return state
@@ -110,6 +118,15 @@ export const addNewPostAC = () => {
 
     } as const
 }
+type AddLikesCount = ReturnType<typeof addLikesCountAC>
+export const addLikesCountAC = (likes: number,id:string) => {
+    return {
+        type: "NEW-LIKES-COUNT",
+        likes,
+        id
+
+    } as const
+}
 type ChangePostType = ReturnType<typeof changePostAC>
 export const changePostAC = (newText: string) => {
     return {
@@ -119,7 +136,7 @@ export const changePostAC = (newText: string) => {
 }
 
 type GetProfileType = ReturnType<typeof setUserProfile>
-export const setUserProfile = ( profile: ProfileType) => {
+export const setUserProfile = (profile: ProfileType) => {
     return {
         type: "GET_PROFILE",
 
@@ -127,37 +144,36 @@ export const setUserProfile = ( profile: ProfileType) => {
     } as const
 }
 
-type SetUserStatus=ReturnType<typeof setUserStatus>
-export const setUserStatus=(status:string)=>{
-return {
-    type:"GET_STATUS",
-   status
-}as const
+type SetUserStatus = ReturnType<typeof setUserStatus>
+export const setUserStatus = (status: string) => {
+    return {
+        type: "GET_STATUS",
+        status
+    } as const
 }
 
 
-
-export const getProfyles=(userId:number)=>(dispatch:Dispatch)=>{ //ThunkCreator
+export const getProfyles = (userId: number) => (dispatch: Dispatch) => { //ThunkCreator
     profileApi.getProfyles(userId)
         .then((res) => {
 
-           dispatch(setUserProfile(res.data))
+            dispatch(setUserProfile(res.data))
         })
 }
-export const getStatus=(userId:number | null)=>(dispatch:Dispatch)=>{ // ThunkCreator
-     profileApi.getStatus(userId)
-         .then((res)=>{
+export const getStatus = (userId: number | null) => (dispatch: Dispatch) => { // ThunkCreator
+    profileApi.getStatus(userId)
+        .then((res) => {
 
-             dispatch(setUserStatus(res.data))
-         })
+            dispatch(setUserStatus(res.data))
+        })
 }
 
-export const updateStatus=(status:string)=>(dispatch:Dispatch)=>{
-profileApi.updateStatus(status)
-    .then((res)=>{
-        if(res.data.resultCode===0)
-        dispatch(setUserStatus(status))
-    })
+export const updateStatus = (status: string) => (dispatch: Dispatch) => {
+    profileApi.updateStatus(status)
+        .then((res) => {
+            if (res.data.resultCode === 0)
+                dispatch(setUserStatus(status))
+        })
 }
 
 

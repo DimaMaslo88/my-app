@@ -10,8 +10,10 @@ import {AppRootStateType} from "../../redux/redux-store";
 export function MyPosts(props: any) {
     const dispatch = useDispatch()
     const postMessage = useSelector<AppRootStateType, string>(state => state.profilePage.newPostText)
-    let postElements = props.post.map((m: PostType) => <Posts key={m.id} message={m.message}
-                                                              likesCount={m.likesCount}/>)
+
+    let postElements = props.post.map((m: PostType) => <Posts key={m.id} postId = {m.id} message={m.message}
+                                                              likesCount={m.likesCount}
+    />)
 
     let onNewPost = () => {
         props.addPost()

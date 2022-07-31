@@ -1,7 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../redux/redux-store";
-import {sendNewMessageAC, updateNewMessageAC} from "../../redux/messagepage-reducer";
+
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -17,16 +16,14 @@ type TextAreaPropsType = {
 export const TextArea = ({messageText, sendText, updateText}: TextAreaPropsType) => {
 
 
-    const dispatch = useDispatch()
-    // let messageTextArea = useSelector<AppRootStateType, string>(state => state.messagesPage.newMessageText)
     const onClickHandler = () => {
 
-        dispatch(sendText)
-        // props.store.dispatch(sendNewMessageAC())
+        sendText()
+
     }
     const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            dispatch(sendText)
+           sendText()
         }
     }
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {

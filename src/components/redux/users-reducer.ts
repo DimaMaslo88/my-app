@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {usersApi} from "../../api/users_api";
 import {followApi} from "../../api/follow_api";
-import {Preloader} from "../../common/Preloader";
+
 
 type GeneralType = FollowType
     | UnFollowType
@@ -10,22 +10,23 @@ type GeneralType = FollowType
     | setTotalUsersCount
     | ToggleIsFetchingType
     | ToggleIsTouchingType
+    | SetPageSizeCount
 
 export type UsersType = {
     id: string,
     followed: boolean,
     name: string,
     status: string,
-    photos:{
+    photos: {
         small: string
         large: string
     }
-    uniqueUrlName:string
+    uniqueUrlName: string
 
 }
 
 
- export type initialStateType = {
+export type initialStateType = {
     users: UsersType[]
     pageSize: number
     totalUsersCount: number
@@ -42,8 +43,6 @@ const initialState: initialStateType = {
     currentPage: 1,
     isFetching: false,
     touchingProgress: [],
-
-
 
 
 }
@@ -75,6 +74,9 @@ export const usersReducer = (state = initialState, action: GeneralType): initial
                     ? [...state.touchingProgress, action.userId]
                     : state.touchingProgress.filter(f => f !== action.userId)
             }
+        }
+        case "SET_PAGE_SIZE_COUNT":{
+            return {...state,pageSize:action.pageSize}
         }
 
         default:
@@ -116,6 +118,13 @@ export const setTotalUsersCount = (totalUsersCount: number) => {
         totalUsersCount,
     } as const
 }
+type SetPageSizeCount = ReturnType<typeof setPageSizeCount>
+export const setPageSizeCount = (pageSize: number) => {
+    return {
+        type: "SET_PAGE_SIZE_COUNT",
+        pageSize,
+    } as const
+}
 type ToggleIsFetchingType = ReturnType<typeof toggleIsFetching>
 export const toggleIsFetching = (isFetching: boolean) => {
     return {
@@ -145,7 +154,7 @@ export const getUsers = (currentPage: number, pageSize: number) => (dispatch: Di
             }
         )
 }
-export const createPost=(userId:string)=>(dispatch:Dispatch)=>{   //Thunk
+export const createPost = (userId: string) => (dispatch: Dispatch) => {   //Thunk
     dispatch(toggleIsTouching(true, userId))
     followApi.createPost(userId)
         .then((res) => {
@@ -155,15 +164,15 @@ export const createPost=(userId:string)=>(dispatch:Dispatch)=>{   //Thunk
             dispatch(toggleIsTouching(false, userId))
         })
 }
-export const deletePost=(userId:string)=>(dispatch:Dispatch)=>{    //Thunk
-    dispatch(toggleIsTouching(true,userId))
+export const deletePost = (userId: string) => (dispatch: Dispatch) => {    //Thunk
+    dispatch(toggleIsTouching(true, userId))
     followApi.deletePost(userId)
         .then((res) => {
             if (res.data.resultCode === 0) {
-               dispatch(unFollow(userId))
+                dispatch(unFollow(userId))
 
             }
-           dispatch(toggleIsTouching(false,userId))
+            dispatch(toggleIsTouching(false, userId))
 
         })
 }
