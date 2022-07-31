@@ -1,0 +1,15 @@
+.footer {
+    grid-area: foot;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #77d8a8;
+    box-shadow: 7px 3px 3px #25bd71;
+    border-radius: 5px;
+    border: 2px solid #25bd71
+}
+
+.ending {
+    color: honeydew;
+    display: grid;
+    justify-content: center;
+}

@@ -13,6 +13,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {initializeAppTC, loginUser} from "./components/redux/auth_reducer";
 import CircularProgress from "@mui/material/CircularProgress";
 import {AppRootStateType} from "./components/redux/redux-store";
+import {Footer} from "./components/Footer/Footer";
 
 
 const MyFirstProject = () => {
@@ -38,6 +39,7 @@ const MyFirstProject = () => {
 
             <HeaderContainer/>
             <NavBar/>
+            <Footer/>
             <div className='app-wrapper-content'>
 
                 <Routes>
